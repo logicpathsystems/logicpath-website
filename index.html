@@ -524,14 +524,16 @@
         /* Technology Stack */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .tech-item {
             background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 0.75rem;
+            border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: all 0.3s ease;
@@ -545,19 +547,19 @@
         }
 
         .tech-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         .tech-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .tech-name {
             font-weight: 600;
             color: #374151;
-            font-size: 0.975rem;
+            font-size: 0.75rem;
         }
 
         /* Contact Section */
