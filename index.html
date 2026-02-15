@@ -218,9 +218,10 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #6366f1, #8b5cf6);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.9)), url('assets/images/header-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             padding: 10rem 0 8rem;
             text-align: center;
@@ -228,19 +229,7 @@
             overflow: hidden;
         }
 
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+        /* Removed gradient animation */
 
         .hero::before {
             content: '';
