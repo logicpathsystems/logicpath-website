@@ -451,33 +451,39 @@
 
         .device-frame {
             position: relative;
-            border-radius: 20px;
-            /* Slightly larger radius for the frame */
+            border-radius: 24px;
+            /* Soft, modern curve */
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin: 1rem auto 2rem;
+            box-shadow:
+                0 20px 40px -10px rgba(0, 0, 0, 0.15),
+                /* Drop shadow */
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+            /* Subtle border */
+            margin: 2rem auto 3rem;
             max-width: 100%;
-            border: 8px solid #1f2937;
-            /* Thicker border for bezel effect */
-            background: #1f2937;
-            /* Match border color */
-            padding: 2px;
-            /* Small padding to prevent image edge clipping */
+            background: #ffffff;
+            /* Clean background */
+            padding: 12px;
+            /* Padding creates the white "frame" effect */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .device-frame:hover {
-            transform: translateY(-5px);
-            transition: transform 0.3s ease;
+            transform: translateY(-8px);
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(59, 130, 246, 0.3);
+            /* Subtle blue highlight on hover */
         }
 
         .device-frame img {
             display: block;
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            /* Inner radius for the screen/image */
-            background: white;
-            /* Ensure image has a background */
+            border-radius: 16px;
+            /* Matches container curve but slightly tighter */
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            /* Subtle inner definition */
         }
 
         .app-header h3 {
