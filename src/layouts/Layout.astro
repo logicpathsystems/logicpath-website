@@ -1,0 +1,643 @@
+---
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content={description || "Logicpath Systems - Professional Android App Development & Web Development Company. Transform your ideas into digital solutions with our expert team."}>
+    <meta name="keywords"
+        content="Android app development, web development, mobile apps, UI/UX design, Marathi Calendar, Constitution of India app">
+    <meta name="author" content="Logicpath Systems">
+    <title>{title || "Logicpath Systems - Transform Ideas Into Digital Solutions"}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://logicpathsystems.com/">
+    <meta property="og:title" content="Logicpath Systems - We Build Apps That People Love">
+    <meta property="og:description"
+        content="Transforming ideas into polished digital experiences. Professional Android & Web Development Company grounded in Barshi, Maharashtra.">
+    <meta property="og:image" content="https://logicpathsystems.com/assets/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://logicpathsystems.com/">
+    <meta property="twitter:title" content="Logicpath Systems - We Build Apps That People Love">
+    <meta property="twitter:description"
+        content="Transforming ideas into polished digital experiences. Professional Android & Web Development.">
+    <meta property="twitter:image" content="https://logicpathsystems.com/assets/images/logo.png">
+
+    <!-- Google Fonts: Outfit (Headings) and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Devicon CDN for Tech Stack Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Logicpath Systems",
+      "url": "https://logicpathsystems.com",
+      "logo": "https://logicpathsystems.com/assets/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9422067401",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "mr", "hi"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/logicpath-systems"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "534/4/54, Shanti Nagar, Kasarwadi Road",
+        "addressLocality": "Barshi",
+        "addressRegion": "Maharashtra",
+        "postalCode": "413401",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
+    <style is:global>
+        :root {
+            /* Color Palette */
+            --bg-primary: #0f172a; /* Slate 900 */
+            --bg-secondary: #1e293b; /* Slate 800 */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Translucent Slate 800 */
+            --text-primary: #f8fafc; /* Slate 50 */
+            --text-secondary: #94a3b8; /* Slate 400 */
+            --accent-primary: #6366f1; /* Indigo 500 */
+            --accent-secondary: #22d3ee; /* Cyan 400 */
+            --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            
+            /* Sizing & Spacing */
+            --container-max-width: 1280px;
+            --section-padding: clamp(4rem, 8vw, 8rem) 0;
+            --border-radius: 16px;
+            --transition-speed: 0.3s;
+        }
+
+        /* Essential Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.01em; margin-bottom: 1rem; }
+        h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; color: var(--text-secondary); }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Container Layout */
+        .container {
+            width: 100%;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        /* Header & Nav */
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all var(--transition-speed) ease;
+            background: transparent;
+            padding: 1.5rem 0;
+        }
+
+        #main-header.scrolled {
+            background: rgba(15, 23, 42, 0.85); /* Slate 900 w/ opacity */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1001; /* To stay above mobile menu */
+        }
+
+        .logo img {
+            height: 40px;
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color var(--transition-speed) ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width var(--transition-speed) ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger::before, .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger::before { top: -8px; }
+        .hamburger::after { top: 8px; }
+
+        /* Mobile Menu Active States */
+        body.menu-open { overflow: hidden; }
+        .mobile-menu-btn.active .hamburger { background: transparent; }
+        .mobile-menu-btn.active .hamburger::before { top: 0; transform: rotate(45deg); }
+        .mobile-menu-btn.active .hamburger::after { top: 0; transform: rotate(-45deg); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Global Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Glassmorphism Cards Utilities */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Base Utilities */
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(3rem, 5vw, 5rem);
+            max-width: 800px;
+            margin-inline: auto;
+        }
+
+        .section-header p {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+        }
+
+        .badge-style {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+            }
+
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Add stagger effect to mobile menu */
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+
+            .nav-links a { font-size: 1.5rem; }
+
+            .footer-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+            .footer-section p { margin-inline: auto; }
+            .social-links { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">
+                    <!-- Assuming you place your logo correctly or keep this text fallback -->
+                    Logicpath <span style="color: var(--accent-secondary);">Systems</span>
+                </a>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="/#home">Home</a></li>
+                    <li><a href="/#apps">Apps</a></li>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <div class="hamburger"></div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Logicpath Systems</h4>
+                    <p>Transforming complex ideas into state-of-the-art digital solutions.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="Facebook"><i class="devicon-facebook-plain"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="Twitter"><i class="devicon-twitter-original"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link"
+                            aria-label="LinkedIn"><i class="devicon-linkedin-plain"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Applications</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#apps">Marathi Calendar 2026</a></li>
+                        <li><a href="/#apps">Constitution of India</a></li>
+                        <li><a href="/#apps">All Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#services">Android Development</a></li>
+                        <li><a href="/#services">Web Development</a></li>
+                        <li><a href="/#services">UI/UX Design</a></li>
+                        <li><a href="/#services">Backend Architecture</a></li>
+                        <li><a href="/#services">Maintenance & Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#home">Home</a></li>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/#apps">Our Portfolios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Logicpath Systems. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Header Scroll State
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const body = document.body;
+
+        function toggleMenu() {
+            mobileBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // This will be called on Astro page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
