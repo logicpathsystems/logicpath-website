@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="hero-bg"></div>
         <div class="container hero-container reveal">
             <div class="hero-content">
-                <div class="badge-style" style="margin-bottom: 2rem;">
+                <div class="badge-style hero-badge">
                     <span>✨</span> Next-Gen Digital Solutions
                 </div>
                 <h1>We Build Apps<br>That <span class="gradient-text">People Love</span></h1>
@@ -18,11 +18,13 @@ import Layout from '../layouts/Layout.astro';
                     <a href="#apps" class="btn btn-primary">View Our Work</a>
                     <a href="#contact" class="btn btn-secondary">Start Your Project</a>
                 </div>
-                
+
                 <div class="trust-badges">
-                    <div class="badge-item glass-card"><span>🚀</span> Trusted by 2,100+ Users</div>
-                    <div class="badge-item glass-card"><span>⭐</span> 5.0 Average Rating</div>
-                    <div class="badge-item glass-card"><span>📱</span> 2 Live Apps</div>
+                    <span class="trust-item"><span class="trust-icon">🚀</span> Trusted by 2,100+ Users</span>
+                    <span class="trust-dot"></span>
+                    <span class="trust-item"><span class="trust-icon">⭐</span> 5.0 Average Rating</span>
+                    <span class="trust-dot"></span>
+                    <span class="trust-item"><span class="trust-icon">📱</span> 2 Live Apps</span>
                 </div>
             </div>
         </div>
@@ -35,10 +37,10 @@ import Layout from '../layouts/Layout.astro';
                 <h2>Our Featured <span class="gradient-text">Applications</span></h2>
                 <p>Download our highly-rated mobile applications, designed for intuitive experiences and maximum productivity.</p>
             </div>
-            
+
             <div class="apps-grid">
                 <!-- App 1 -->
-                <div class="app-card glass-card reveal">
+                <div class="app-card card reveal">
                     <div class="app-image-container gradient-bg-1">
                         <img src="assets/images/calendar.png" alt="Marathi Calendar App" class="app-mockup">
                     </div>
@@ -50,12 +52,12 @@ import Layout from '../layouts/Layout.astro';
                             <div class="metric"><span class="val">2k+</span> <span class="lbl">Installs</span></div>
                             <div class="metric"><span class="val">⭐ 5.0</span> <span class="lbl">Rating</span></div>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.anjali.marathi_calendar" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full" style="width: 100%; margin-top: 1rem;">Get on Google Play</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.anjali.marathi_calendar" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full">Get on Google Play</a>
                     </div>
                 </div>
 
                 <!-- App 2 -->
-                <div class="app-card glass-card reveal" style="transition-delay: 0.2s;">
+                <div class="app-card card reveal d2">
                     <div class="app-image-container gradient-bg-2">
                         <img src="assets/images/constitution.png" alt="Constitution App" class="app-mockup">
                     </div>
@@ -67,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
                             <div class="metric"><span class="val">100+</span> <span class="lbl">Installs</span></div>
                             <div class="metric"><span class="val">⭐ 5.0</span> <span class="lbl">Rating</span></div>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.polityhub.constitution" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full" style="width: 100%; margin-top: 1rem;">Get on Google Play</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.polityhub.constitution" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full">Get on Google Play</a>
                     </div>
                 </div>
             </div>
@@ -77,28 +79,28 @@ import Layout from '../layouts/Layout.astro';
     <!-- Stats Section -->
     <section id="stats" class="stats">
         <div class="container reveal">
-            <div class="stats-wrapper glass-card">
+            <div class="stats-wrapper">
                 <div class="stat-item">
                     <div class="stat-icon">⬇️</div>
-                    <div class="stat-number gradient-text">2,100+</div>
+                    <div class="stat-number">2,100+</div>
                     <div class="stat-label">Downloads</div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon">📱</div>
-                    <div class="stat-number gradient-text">2</div>
+                    <div class="stat-number">2</div>
                     <div class="stat-label">Live Apps</div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon">📅</div>
-                    <div class="stat-number gradient-text">1+</div>
+                    <div class="stat-number">1+</div>
                     <div class="stat-label">Years Exp</div>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <div class="stat-icon">⭐</div>
-                    <div class="stat-number gradient-text">5.0</div>
+                    <div class="stat-number">5.0</div>
                     <div class="stat-label">Avg Rating</div>
                 </div>
             </div>
@@ -112,34 +114,34 @@ import Layout from '../layouts/Layout.astro';
                 <h2>Our <span class="gradient-text">Services</span></h2>
                 <p>Comprehensive digital solutions tailored to your business needs, built with modern technology stacks.</p>
             </div>
-            
+
             <div class="services-grid">
-                <div class="service-card glass-card reveal">
+                <div class="service-card card reveal">
                     <div class="icon-wrapper">📱</div>
                     <h3>Android Dev</h3>
                     <p>Custom mobile applications built from concept to deployment on the Play Store.</p>
                 </div>
-                <div class="service-card glass-card reveal" style="transition-delay: 0.1s;">
+                <div class="service-card card reveal d1">
                     <div class="icon-wrapper">🌐</div>
                     <h3>Web Dev</h3>
                     <p>Responsive, lightning-fast interfaces using modern frameworks like React and Astro.</p>
                 </div>
-                <div class="service-card glass-card reveal" style="transition-delay: 0.2s;">
+                <div class="service-card card reveal d2">
                     <div class="icon-wrapper">🎨</div>
                     <h3>UI/UX Design</h3>
                     <p>Beautiful, intuitive user experiences crafted with precision and creativity.</p>
                 </div>
-                <div class="service-card glass-card reveal">
+                <div class="service-card card reveal">
                     <div class="icon-wrapper">⚙️</div>
                     <h3>Backend Architecture</h3>
                     <p>Secure, massively scalable APIs and databases using top-tier cloud solutions.</p>
                 </div>
-                <div class="service-card glass-card reveal" style="transition-delay: 0.1s;">
+                <div class="service-card card reveal d1">
                     <div class="icon-wrapper">🔧</div>
                     <h3>App Maintenance</h3>
                     <p>Relentless updates, optimization, and bug fixing to keep your app perfect.</p>
                 </div>
-                <div class="service-card glass-card reveal" style="transition-delay: 0.2s;">
+                <div class="service-card card reveal d2">
                     <div class="icon-wrapper">📊</div>
                     <h3>Digital Marketing</h3>
                     <p>Data-driven App Store Optimization and user acquisition strategies.</p>
@@ -157,12 +159,12 @@ import Layout from '../layouts/Layout.astro';
                     <h2>Excellence through <span class="gradient-text">Innovation</span></h2>
                     <p>We bring fresh ideas and modern solutions to every project. By utilizing cutting-edge tech and robust testing practices, we ensure your digital product stands out.</p>
                     <ul class="feature-list">
-                        <li><span>✓</span> Ultra-Fast Delivery</li>
-                        <li><span>✓</span> Scalable Architecture</li>
-                        <li><span>✓</span> 24/7 Premium Support</li>
+                        <li><span class="check-chip">✓</span> Ultra-Fast Delivery</li>
+                        <li><span class="check-chip">✓</span> Scalable Architecture</li>
+                        <li><span class="check-chip">✓</span> 24/7 Premium Support</li>
                     </ul>
                 </div>
-                <div class="about-image glass-card">
+                <div class="about-image card">
                     <div class="tech-grid">
                         <div class="tech-icon"><i class="devicon-flutter-plain colored"></i></div>
                         <div class="tech-icon"><i class="devicon-react-original colored"></i></div>
@@ -184,10 +186,12 @@ import Layout from '../layouts/Layout.astro';
                     <div class="badge-style">Get in Touch</div>
                     <h2>Let's Start Your <span class="gradient-text">Project</span></h2>
                     <p>Contact us today for a free consultation and let's craft something amazing together.</p>
-                    
+
                     <div class="contact-methods">
                         <div class="contact-method">
-                            <div class="contact-icon">📧</div>
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+                            </div>
                             <div>
                                 <h4>Email Us</h4>
                                 <a href="mailto:contact@logicpathsystems.com">contact@logicpathsystems.com</a>
@@ -195,8 +199,8 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
                 </div>
-                
-                <div class="contact-form-wrapper glass-card reveal" style="transition-delay: 0.2s;">
+
+                <div class="contact-form-wrapper card reveal d2">
                     <form id="contactForm" action="https://formspree.io/f/mqelryww" method="POST" class="modern-form">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -219,8 +223,8 @@ import Layout from '../layouts/Layout.astro';
                             <label for="message">Project Details</label>
                             <textarea id="message" name="message" required placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message 🚀</button>
-                        <div id="formMessage" class="form-message"></div>
+                        <button type="submit" class="btn btn-primary w-full">Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4Z"></path></svg></button>
+                        <div id="formMessage" class="form-message" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -230,6 +234,10 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+    /* Reveal delay utilities (replaces inline transition-delay styles) */
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+
     /* Hero Section */
     .hero {
         min-height: 100vh;
@@ -239,15 +247,21 @@ import Layout from '../layouts/Layout.astro';
         padding-top: 100px; /* Offset for header */
         overflow: hidden;
     }
-    
+
+    /* Blueprint grid + single top indigo glow */
     .hero-bg {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.15) 0%, transparent 50%);
+        background-image:
+            radial-gradient(60% 45% at 50% 0%, rgba(99, 102, 241, 0.18) 0%, transparent 70%),
+            linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 100% 100%, 64px 64px, 64px 64px;
+        -webkit-mask-image: radial-gradient(80% 70% at 50% 30%, #000 0%, transparent 100%);
+        mask-image: radial-gradient(80% 70% at 50% 30%, #000 0%, transparent 100%);
         z-index: 0;
     }
-    
+
     .hero-container {
         position: relative;
         z-index: 1;
@@ -256,67 +270,77 @@ import Layout from '../layouts/Layout.astro';
         align-items: center;
         text-align: center;
     }
-    
+
     .hero-content {
         max-width: 900px;
         margin: 0 auto;
     }
-    
+
+    .hero-badge { margin-bottom: 2rem; }
+
     .hero h1 {
         margin-bottom: 2rem;
     }
-    
+
     .hero-subtitle {
         font-size: clamp(1.125rem, 2.5vw, 1.35rem);
         color: var(--text-secondary);
         max-width: 700px;
         margin: 0 auto 3rem;
     }
-    
+
     .cta-buttons {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 
+    /* Trust strip — quiet inline row separated by dots */
     .trust-badges {
         display: flex;
-        gap: 1.5rem;
+        align-items: center;
+        gap: 1rem;
         justify-content: center;
         flex-wrap: wrap;
+        color: var(--text-tertiary);
+        font-size: 0.9rem;
     }
-    
-    .trust-badges .badge-item {
-        padding: 0.75rem 1.5rem;
-        border-radius: 9999px;
-        display: flex;
+
+    .trust-item {
+        display: inline-flex;
         align-items: center;
-        gap: 0.75rem;
-        font-weight: 500;
-        font-size: 0.95rem;
+        gap: 0.5rem;
+    }
+
+    .trust-icon { font-size: 0.95rem; }
+
+    .trust-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--text-tertiary);
+        opacity: 0.6;
     }
 
     /* Apps Section */
     .apps-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
+        gap: 2rem;
     }
-    
+
     .app-card {
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
-    
+
     .app-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        transform: translateY(-4px);
     }
-    
+
     .app-image-container {
         height: 250px;
         display: flex;
@@ -326,117 +350,139 @@ import Layout from '../layouts/Layout.astro';
         position: relative;
         overflow: hidden;
     }
-    
-    .gradient-bg-1 { background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(34, 211, 238, 0.2) 100%); }
-    .gradient-bg-2 { background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%); }
-    
+
+    /* Subtler 8% tint gradients + faint grid overlay */
+    .app-image-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 32px 32px;
+        pointer-events: none;
+    }
+
+    .gradient-bg-1 { background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(34, 211, 238, 0.08) 100%); }
+    .gradient-bg-2 { background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%); }
+
     .app-mockup {
         height: 100%;
         object-fit: contain;
         filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
         transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1;
     }
-    
+
     .app-card:hover .app-mockup {
         transform: scale(1.05) translateY(-5px);
     }
-    
+
     .app-content {
         padding: 2.5rem;
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-    
+
     .app-tag {
         font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: var(--accent-secondary);
+        color: var(--accent-bright);
         margin-bottom: 1rem;
     }
-    
+
     .app-metrics {
         display: flex;
         gap: 1.5rem;
         margin-block: auto 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(255,255,255,0.05);
+        border-top: 1px solid var(--border-subtle);
     }
-    
+
     .metric {
         display: flex;
         flex-direction: column;
     }
-    
-    .metric .val { font-weight: 700; font-size: 1.25rem; color: var(--text-primary); }
-    .metric .lbl { font-size: 0.85rem; color: var(--text-secondary); }
 
-    /* Stats Section */
+    .metric .val { font-weight: 700; font-size: 1.25rem; color: var(--text-primary); }
+    .metric .lbl { font-size: 0.85rem; color: var(--text-tertiary); }
+
+    /* Stats Section — borderless band with hairline top/bottom rules */
     .stats-wrapper {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 3rem;
+        padding: 3rem 1rem;
         flex-wrap: wrap;
         gap: 2rem;
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
     }
-    
+
     .stat-item {
         text-align: center;
         flex: 1;
         min-width: 150px;
     }
-    
-    .stat-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .stat-number { font-size: clamp(2.5rem, 4vw, 3.5rem); font-family: 'Outfit'; font-weight: 800; line-height: 1; margin-bottom: 0.5rem; }
-    .stat-label { font-size: 1.1rem; color: var(--text-secondary); font-weight: 500; }
-    
+
+    .stat-icon { font-size: 1.75rem; margin-bottom: 0.75rem; opacity: 0.55; }
+    .stat-number {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        color: var(--accent-bright);
+        letter-spacing: -0.02em;
+    }
+    .stat-label { font-size: 1rem; color: var(--text-secondary); font-weight: 500; }
+
     .stat-divider {
         width: 1px;
         height: 80px;
-        background: rgba(255,255,255,0.1);
+        background: var(--border-subtle);
     }
 
     /* Services Section */
     .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        gap: 1.5rem;
     }
-    
+
     .service-card {
-        padding: 2.5rem;
-        transition: transform 0.3s ease, background 0.3s ease;
+        padding: 2rem;
     }
-    
+
     .service-card:hover {
-        transform: translateY(-5px);
-        background: rgba(30, 41, 59, 0.9);
-        border-color: rgba(99, 102, 241, 0.3);
+        transform: translateY(-4px);
     }
-    
+
+    /* 44px icon chip */
     .icon-wrapper {
-        width: 60px; height: 60px;
-        border-radius: 14px;
-        background: rgba(99, 102, 241, 0.1);
+        width: 44px; height: 44px;
+        border-radius: var(--radius-md);
+        background: rgba(99, 102, 241, 0.08);
         display: flex; align-items: center; justify-content: center;
-        font-size: 1.75rem;
+        font-size: 1.35rem;
         margin-bottom: 1.5rem;
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        border: 1px solid var(--border-subtle);
     }
-    
+
     /* About Section */
     .about-flex {
         display: flex;
         align-items: center;
         gap: 4rem;
     }
-    
+
     .about-text { flex: 1; }
     .about-text h2 { margin-block: 1rem 1.5rem; }
-    
+
     .feature-list {
         list-style: none;
         margin-top: 2rem;
@@ -444,7 +490,7 @@ import Layout from '../layouts/Layout.astro';
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .feature-list li {
         display: flex;
         align-items: center;
@@ -452,37 +498,55 @@ import Layout from '../layouts/Layout.astro';
         font-size: 1.1rem;
         color: var(--text-primary);
     }
-    
-    .feature-list li span {
-        color: var(--accent-secondary);
-        font-weight: 800;
+
+    /* Circular check chip */
+    .check-chip {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent-bright);
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid var(--border-subtle);
     }
-    
+
     .about-image {
         flex: 1;
         padding: 3rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: radial-gradient(circle at center, rgba(99,102,241,0.1), transparent);
     }
-    
+
     .tech-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 1.5rem;
     }
-    
+
     .tech-icon {
-        font-size: 3.5rem;
+        font-size: 3rem;
         filter: grayscale(1) opacity(0.7);
         transition: all 0.3s ease;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-subtle);
+        background: rgba(255, 255, 255, 0.02);
     }
-    
+
     .tech-icon:hover {
         filter: grayscale(0) opacity(1);
-        transform: scale(1.1);
+        transform: scale(1.05);
+        border-color: var(--border-hover);
     }
 
     /* Contact Section */
@@ -492,55 +556,60 @@ import Layout from '../layouts/Layout.astro';
         gap: 4rem;
         align-items: start;
     }
-    
+
     .contact-info h2 { margin-block: 1rem; }
     .contact-info p { margin-bottom: 3rem; font-size: 1.125rem; }
-    
+
     .contact-methods {
         display: flex;
         flex-direction: column;
         gap: 2rem;
     }
-    
+
     .contact-method {
         display: flex;
         align-items: flex-start;
         gap: 1.5rem;
     }
-    
+
     .contact-method .contact-icon {
-        width: 50px; height: 50px;
-        border-radius: 50%;
-        background: rgba(34, 211, 238, 0.1);
+        flex-shrink: 0;
+        width: 44px; height: 44px;
+        border-radius: var(--radius-md);
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid var(--border-subtle);
         display: flex; align-items: center; justify-content: center;
-        font-size: 1.5rem;
+        color: var(--accent-bright);
     }
-    
+
+    .contact-method .contact-icon svg { width: 20px; height: 20px; }
+
     .contact-method h4 { margin-bottom: 0.25rem; font-size: 1.1rem; }
     .contact-method a, .contact-method span { color: var(--text-secondary); text-decoration: none; }
-    .contact-method a:hover { color: var(--accent-secondary); }
-    
+    .contact-method a:hover { color: var(--accent-bright); }
+
     .contact-form-wrapper { padding: 3rem; }
-    
+
     .modern-form .form-group { margin-bottom: 1.5rem; }
     .modern-form label {
         display: block; margin-bottom: 0.5rem;
-        font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+        font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary);
     }
     .modern-form input, .modern-form select, .modern-form textarea {
         width: 100%;
-        padding: 1rem;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
+        padding: 0.875rem 1rem;
+        background: #0c101b;
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
         color: var(--text-primary);
         font-family: inherit;
         font-size: 1rem;
-        transition: all 0.3s ease;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
+    .modern-form input::placeholder, .modern-form textarea::placeholder { color: var(--text-tertiary); }
     .modern-form input:focus, .modern-form select:focus, .modern-form textarea:focus {
         outline: none;
-        border-color: var(--accent-primary);
+        border-color: var(--accent);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
     .modern-form textarea { min-height: 120px; resize: vertical; }
@@ -556,7 +625,6 @@ import Layout from '../layouts/Layout.astro';
         .hero { padding-top: 120px; }
         .cta-buttons { flex-direction: column; width: 100%; }
         .cta-buttons .btn { width: 100%; }
-        .trust-badges { flex-direction: column; width: 100%; align-items: stretch;}
         .app-image-container { height: 200px; }
         .contact-form-wrapper { padding: 2rem 1.5rem; }
     }
@@ -566,7 +634,7 @@ import Layout from '../layouts/Layout.astro';
     // Form handling
     const form = document.getElementById('contactForm');
     const msgDiv = document.getElementById('formMessage');
-    
+
     if (form && msgDiv) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -575,14 +643,14 @@ import Layout from '../layouts/Layout.astro';
                 const originalText = btn.innerHTML;
                 btn.innerHTML = 'Sending... ⏳';
                 btn.disabled = true;
-                
+
                 try {
                     const response = await fetch(form.action, {
                         method: 'POST',
                         body: new FormData(form as HTMLFormElement),
                         headers: { 'Accept': 'application/json' }
                     });
-                    
+
                     if (response.ok) {
                         msgDiv.innerHTML = '<div style="color:var(--accent-secondary); margin-top:1rem; padding:1rem; background:rgba(34,211,238,0.1); border-radius:8px;">Message sent successfully! We will get back to you soon.</div>';
                         (form as HTMLFormElement).reset();
