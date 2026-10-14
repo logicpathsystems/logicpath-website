@@ -166,12 +166,13 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="about-image card">
                     <div class="tech-grid">
-                        <div class="tech-icon"><i class="devicon-flutter-plain colored"></i></div>
-                        <div class="tech-icon"><i class="devicon-react-original colored"></i></div>
-                        <div class="tech-icon"><i class="devicon-javascript-plain colored"></i></div>
-                        <div class="tech-icon"><i class="devicon-firebase-plain colored"></i></div>
-                        <div class="tech-icon"><i class="devicon-androidstudio-plain colored"></i></div>
-                        <div class="tech-icon"><i class="devicon-git-plain colored"></i></div>
+                        <!-- Devicon v2.17.0 SVGs, self-hosted -->
+                        <div class="tech-icon"><img src="/assets/icons/flutter-original.svg" alt="Flutter" width="48" height="48" loading="lazy"></div>
+                        <div class="tech-icon"><img src="/assets/icons/react-original.svg" alt="React" width="48" height="48" loading="lazy"></div>
+                        <div class="tech-icon"><img src="/assets/icons/javascript-original.svg" alt="JavaScript" width="48" height="48" loading="lazy"></div>
+                        <div class="tech-icon"><img src="/assets/icons/firebase-original.svg" alt="Firebase" width="48" height="48" loading="lazy"></div>
+                        <div class="tech-icon"><img src="/assets/icons/androidstudio-original.svg" alt="Android Studio" width="48" height="48" loading="lazy"></div>
+                        <div class="tech-icon"><img src="/assets/icons/git-original.svg" alt="Git" width="48" height="48" loading="lazy"></div>
                     </div>
                 </div>
             </div>
@@ -202,6 +203,11 @@ import Layout from '../layouts/Layout.astro';
 
                 <div class="contact-form-wrapper card reveal d2">
                     <form id="contactForm" action="https://formspree.io/f/mqelryww" method="POST" class="modern-form">
+                        <!-- Honeypot: Formspree rejects submissions where this is filled -->
+                        <div class="hp-field" aria-hidden="true">
+                            <label for="_gotcha">Leave this field empty</label>
+                            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -223,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
                             <label for="message">Project Details</label>
                             <textarea id="message" name="message" required placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-full">Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4Z"></path></svg></button>
+                        <button type="submit" class="btn btn-primary w-full"><span class="btn-label">Send Message</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4Z"></path></svg></button>
                         <div id="formMessage" class="form-message" aria-live="polite"></div>
                     </form>
                 </div>
@@ -628,42 +634,67 @@ import Layout from '../layouts/Layout.astro';
         .app-image-container { height: 200px; }
         .contact-form-wrapper { padding: 2rem 1.5rem; }
     }
+
+    .tech-icon img { width: 3rem; height: 3rem; }
+
+    /* Honeypot — visually removed but still in the DOM for bots */
+    .hp-field {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    /* Alerts are created by the script, so they need :global() to escape Astro's scoping */
+    .form-message :global(.form-alert) {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .form-message :global(.form-alert.success) { color: var(--accent-secondary); background: rgba(34, 211, 238, 0.1); }
+    .form-message :global(.form-alert.error) { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
 </style>
 
 <script>
     // Form handling
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById('contactForm') as HTMLFormElement | null;
     const msgDiv = document.getElementById('formMessage');
+
+    function showMessage(text: string, type: 'success' | 'error') {
+        const alert = document.createElement('div');
+        alert.className = `form-alert ${type}`;
+        alert.textContent = text;
+        msgDiv?.replaceChildren(alert);
+        setTimeout(() => msgDiv?.replaceChildren(), 5000);
+    }
 
     if (form && msgDiv) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-            if(btn) {
-                const originalText = btn.innerHTML;
-                btn.innerHTML = 'Sending... ⏳';
-                btn.disabled = true;
+            const label = btn?.querySelector('.btn-label');
+            if (!btn || !label) return;
 
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form as HTMLFormElement),
-                        headers: { 'Accept': 'application/json' }
-                    });
+            const originalText = label.textContent;
+            label.textContent = 'Sending... ⏳';
+            btn.disabled = true;
 
-                    if (response.ok) {
-                        msgDiv.innerHTML = '<div style="color:var(--accent-secondary); margin-top:1rem; padding:1rem; background:rgba(34,211,238,0.1); border-radius:8px;">Message sent successfully! We will get back to you soon.</div>';
-                        (form as HTMLFormElement).reset();
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                } catch (error) {
-                    msgDiv.innerHTML = '<div style="color:#ef4444; margin-top:1rem; padding:1rem; background:rgba(239,68,68,0.1); border-radius:8px;">Oops! There was a problem. Please try again later.</div>';
-                } finally {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    setTimeout(() => { msgDiv.innerHTML = ''; }, 5000);
-                }
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) throw new Error('Form submission failed');
+                showMessage('Message sent successfully! We will get back to you soon.', 'success');
+                form.reset();
+            } catch {
+                showMessage('Oops! There was a problem. Please try again later.', 'error');
+            } finally {
+                label.textContent = originalText;
+                btn.disabled = false;
             }
         });
     }
