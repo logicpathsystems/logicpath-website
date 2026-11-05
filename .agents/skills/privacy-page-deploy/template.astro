@@ -1,0 +1,104 @@
+---
+// Canonical privacy page template for logicpathsystems.com/privacy/<slug>
+// Copy to src/pages/privacy/<slug>.astro and replace every __PLACEHOLDER__.
+// Placeholders use __NAME__ (never {braces}) because `{` starts an expression in .astro.
+//
+// Section wording below is ILLUSTRATIVE house boilerplate for an AdMob + Firebase
+// app. Replace it with the user's content. Never keep a sentence the user's
+// content does not support — a privacy policy is a legal document.
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+    title="__APP_NAME__ Privacy Policy - Logicpath Systems"
+    description="Privacy policy for the __APP_NAME__ Android app by Logicpath Systems — what data the app uses, advertising and analytics, and your choices."
+>
+    <section class="legal-page" style="padding-top: 120px; min-height: 100vh;">
+        <div class="container reveal">
+            <div class="glass-card" style="padding: clamp(2rem, 5vw, 4rem);">
+                <header style="margin-bottom: 3rem; text-align: center;">
+                    <h1 class="gradient-text">Privacy Policy</h1>
+                    <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 0.5rem;"><strong>__APP_NAME__</strong></p>
+                    <p style="color: var(--text-secondary);">Logicpath Systems &middot; <strong>Last updated:</strong> __D_MONTH_YYYY__</p>
+                </header>
+
+                <main class="legal-content">
+                    <h2>Overview</h2>
+                    <p>__APP_NAME__ is made by Logicpath Systems. This policy explains what information the app uses, why, and the choices you have. The app has no sign-in, and we do not ask for your name, email address, contacts, photos or location.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Data kept on your device</h2>
+                    <p>__ON_DEVICE_DATA__ are saved only on your phone, so they are there next time. They are never sent to us or anyone else. Clearing the app&rsquo;s data or uninstalling the app deletes them.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Advertising</h2>
+                    <p>The app is free and shows ads from Google AdMob. To show and measure ads and to prevent fraud, the Google Mobile Ads SDK may collect your device&rsquo;s advertising ID, IP address (from which an approximate location can be inferred), device and app information, and how you interact with ads. Google handles this data under its own privacy policy. We do not receive it in a form that identifies you. See <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">how Google uses data from apps that use its services</a>.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>App usage analytics</h2>
+                    <p>We use Google Analytics for Firebase to understand how the app is used, for example __ANALYTICS_EXAMPLES__, so we can fix problems and improve it. Firebase may collect an app instance ID, the advertising ID, device model, operating system version, app version, country or region, and usage events. This data is not linked to your name or email address. Google processes it under its own <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">privacy policy</a>.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Your choices</h2>
+                    <p>If you are in the European Economic Area, the UK or Switzerland, the app asks for your consent before personalised ads are shown. You can change that choice at any time from &ldquo;Ad privacy choices&rdquo; on the About screen. On any Android phone you can reset or delete your advertising ID, or opt out of personalised ads, in Settings &gt; Privacy &gt; Ads (or Settings &gt; Google &gt; Ads).</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Children</h2>
+                    <p>The app is meant for users aged 13 and over and is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided personal information through the app, contact us and we will help remove it.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Sharing and security</h2>
+                    <p>We do not sell your information. Apart from the advertising and analytics described above, the app does not share data with third parties. Data sent by the Google SDKs travels over encrypted connections.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Changes to this policy</h2>
+                    <p>If this policy changes, the new version will appear in the app and on this page, with a new &ldquo;Last updated&rdquo; date.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>Contact</h2>
+                    <p>Questions about this policy? Email us at <a href="mailto:contact@logicpathsystems.com" style="color: var(--accent-secondary);"><strong>contact@logicpathsystems.com</strong></a>.</p>
+                </main>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .legal-content h2 {
+        color: var(--text-primary);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .legal-content h3 {
+        color: var(--text-primary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+    }
+
+    .legal-content p, .legal-content ul {
+        color: var(--text-secondary);
+        margin-bottom: 1.25rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .legal-content ul {
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .legal-content li {
+        margin-bottom: 0.5rem;
+    }
+</style>

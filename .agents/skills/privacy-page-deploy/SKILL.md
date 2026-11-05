@@ -1,107 +1,143 @@
 ---
 name: privacy-page-deploy
 description: >-
-  Use this skill when the user provides a URL like
-  logicpathsystems.com/privacy/{appname} along with privacy policy content.
-  It creates or updates the Astro page, builds, commits, and pushes to deploy
-  — all in one shot without waiting for the user to say "deploy".
+  Create or update an app privacy policy page on logicpathsystems.com and
+  deploy it in one pass. Use whenever the user gives a URL like
+  logicpathsystems.com/privacy/{appname} (or asks for a privacy policy or
+  privacy notice page for an Android app) together with the policy content.
+  Writes src/pages/privacy/{appname}.astro from the house template, builds,
+  verifies the route, commits and pushes — without asking "should I deploy?".
 ---
 
 # Privacy Page: Create & Deploy
 
-When the user provides a URL like `logicpathsystems.com/privacy/{appname}` and
-privacy policy content, do **all** of these steps in one go — do NOT stop and
-wait for the user to say "deploy".
+One pass, no check-ins. The user supplies the URL and the content once; you
+produce a live page and report back.
 
-## Steps
+## 1. Resolve the slug
 
-### 1. Extract the app name
-The `{appname}` from the URL maps directly to the filename:
-`src/pages/privacy/{appname}.astro`
+`logicpathsystems.com/privacy/{appname}` → `src/pages/privacy/{appname}.astro`
+→ live at `https://logicpathsystems.com/privacy/{appname}/`
 
-### 2. Create or overwrite the `.astro` file
-Use the template structure below. Convert the user's markdown/plain-text
-content into the HTML body. Apply these formatting rules:
+Slug rules: lowercase, no spaces. Keep the user's spelling exactly — the Play
+Console listing already points at that URL, so `wififtpserver` must not become
+`wifi-ftp-server`.
 
-- **Layout import**: `import Layout from '../../layouts/Layout.astro';`
-- **Wrapper**: `<Layout title="...">` → `<section class="legal-page">` →
-  `<div class="container reveal">` → `<div class="glass-card">`
-- **Header**: `<h1 class="gradient-text">Privacy Policy</h1>` + app name in
-  `<strong>` + effective/last-updated date
-- **Body**: `<main class="legal-content">` with `<h2>` for sections, `<h3>`
-  for subsections
-- **Section dividers**: `<hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />`
-  between each section
-- **Disclaimer divider** (if present): `<hr style="margin: 4rem 0; border-color: rgba(255, 255, 255, 0.2);" />`
-  with `<h2 style="text-align: center; margin-bottom: 2rem;">`
-- **Links**: `style="color: var(--accent-secondary);"` and
-  `target="_blank" rel="noopener noreferrer"`
-- **Email**: `<a href="mailto:contact@logicpathsystems.com" style="color: var(--accent-secondary);"><strong>contact@logicpathsystems.com</strong></a>`
-- **HTML entities**: Use `&ldquo;`/`&rdquo;` for smart quotes, `&mdash;` for
-  em-dashes, `&middot;` for middle dots, `&gt;` for `>`, `&rarr;` for →,
-  `&amp;` for &
-- **Style block**: Include the standard `.legal-content` style block (h2, h3,
-  p, ul, li — see the template reference below)
+**Check whether the file already exists first** (`ls src/pages/privacy/`). If it
+does, this is an *update*: read it, keep the sections the user is not changing,
+and use "Update …" in the commit message.
 
-Reference an existing page for exact style if needed:
-[periodictable.astro](../../src/pages/privacy/periodictable.astro)
+## 2. Write the page
 
-### 3. Build
-```
+Copy [template.astro](template.astro) and replace every `__PLACEHOLDER__`.
+Do not hand-assemble the markup from memory — the template carries inline
+styles that the page breaks without (see House style).
+
+The template's section wording is house boilerplate for an AdMob + Firebase
+app. Replace it with the user's content, section by section.
+
+> [!WARNING]
+> A privacy policy is a legal document and must match the app's Play Console
+> Data Safety declaration. Never invent a data practice the user's content does
+> not state, and never leave template wording that contradicts it — e.g. do not
+> keep the Analytics section for an app with no Firebase, and do not keep "no
+> sign-in" for an app that has accounts. If the content is silent on something
+> material (ads? analytics? on-device storage? children's audience?), ship the
+> page without that section and flag the gap in your final report. Flagging is
+> not asking — still deploy.
+
+### Canonical section order
+
+Overview · Data kept on your device · Advertising · App usage analytics ·
+Your choices · Children · Sharing and security · Changes to this policy ·
+Contact
+
+Drop any section that does not apply; add app-specific ones (e.g. Permissions,
+Camera, Local network) in a sensible position. Use `<h3>` for subsections.
+
+## 3. House style (pinned — the repo has drifted, do not copy older pages)
+
+| Element | Exact form |
+| --- | --- |
+| Brand name | `Logicpath Systems` (not "LogicPath", not "Logic Path") |
+| Page title | `<App Name> Privacy Policy - Logicpath Systems` |
+| `<h1>` | `Privacy Policy` (never "Privacy Notice") |
+| Date line | `Logicpath Systems &middot; <strong>Last updated:</strong> 5 November 2026` |
+| Date value | **Today's real date**, `D Month YYYY` — never the template's date |
+| `description` prop | Always pass one; most existing pages wrongly inherit the generic site meta description |
+| Links | `style="color: var(--accent-secondary);"` + `target="_blank" rel="noopener noreferrer"` |
+| Email | `contact@logicpathsystems.com`, bolded inside the link |
+| Dividers | `<hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />` between sections |
+| Disclaimer divider | `<hr style="margin: 4rem 0; border-color: rgba(255, 255, 255, 0.2);" />` + `<h2 style="text-align: center; margin-bottom: 2rem;">` |
+
+Non-negotiable inline styles (the header in `Layout.astro` is `position: fixed`,
+so without the first one the content sits under the navbar):
+
+- `<section class="legal-page" style="padding-top: 120px; min-height: 100vh;">`
+- `<div class="container reveal">` — `reveal` drives the fade-in; without it the
+  page still shows, but it will not match the rest of the site
+- `<div class="glass-card" style="padding: clamp(2rem, 5vw, 4rem);">`
+
+Entities: `&ldquo;`/`&rdquo;` for smart quotes, `&rsquo;` for apostrophes,
+`&mdash;`, `&middot;`, `&gt;` for `>`, `&rarr;` for →, `&amp;` for `&`.
+
+### Astro gotchas
+
+- `{` and `}` in body text are parsed as expressions — escape as `&#123;` /
+  `&#125;`, or the build fails with a cryptic error.
+- The `<style>` block is scoped and must stay at the end of the file, outside
+  `<Layout>`.
+- CSP (`astro.config.mjs`) allows inline `style=""` attributes and `'self'`
+  scripts only. Never add an external script, font or stylesheet to a legal page.
+- Non-English pages work fine (see `cpchindi.astro`); keep the markup identical
+  and translate only the text.
+
+## 4. Build and verify
+
+```bash
 npm run build
 ```
-Verify the build succeeds and the new route appears in the output
-(e.g., `/privacy/{appname}/index.html`). Do NOT wait for user confirmation.
 
-### 4. Commit and push
+Then confirm the route actually emitted — a green build alone does not prove it:
+
+```bash
+ls dist/privacy/{appname}/index.html && grep -c "Last updated" dist/privacy/{appname}/index.html
+```
+
+Do not wait for user confirmation at any point here.
+
+## 5. Commit and push
+
 ```powershell
-git add src/pages/privacy/{appname}.astro
-git commit -m "Add {App Display Name} privacy policy page"
-# or "Update ..." if the file already existed
-git push origin main
+git add src/pages/privacy/{appname}.astro; git commit -m "Add {App Display Name} privacy policy page"; git push origin main
 ```
-Use `BypassSandbox: true` for git push. Use semicolons (`;`) not `&&` in
-PowerShell.
 
-### 5. Confirm to the user
-Report the live URL, commit hash, and a brief summary of sections included.
+- Use `Update {App Display Name} privacy policy page` when the file existed.
+- **Stage only that one file.** The working tree often holds other unfinished
+  pages — never `git add -A` or `git add .`.
+- `dist/` is gitignored; never commit build output.
+- PowerShell: separate commands with `;`, not `&&`.
+- `git push` needs `dangerouslyDisableSandbox: true`.
 
-## Style Block Reference
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which rebuilds and
+publishes to GitHub Pages. The page is live roughly 1–2 minutes later, so an
+immediate `curl` can still 404 — if you verify, wait and retry once:
 
-```html
-<style>
-    .legal-content h2 {
-        color: var(--text-primary);
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-    }
-
-    .legal-content h3 {
-        color: var(--text-primary);
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-        font-size: 1.25rem;
-    }
-
-    .legal-content p, .legal-content ul {
-        color: var(--text-secondary);
-        margin-bottom: 1.25rem;
-        font-size: 1.05rem;
-        line-height: 1.7;
-    }
-
-    .legal-content ul {
-        padding-left: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .legal-content li {
-        margin-bottom: 0.5rem;
-    }
-</style>
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://logicpathsystems.com/privacy/{appname}/
 ```
+
+## 6. Report
+
+Give the user:
+
+- the live URL,
+- the commit hash and whether it was an add or an update,
+- the sections included,
+- any material gap you flagged in step 2,
+- a reminder to paste the URL into Play Console → App content → Privacy policy
+  if this is a new app.
 
 > [!IMPORTANT]
-> Do everything in one pass. The user should only need to provide the URL and
-> content once. Do not ask "should I deploy?" — just do it.
+> Everything above happens in one pass. Do not ask "should I deploy?" or "does
+> this look right?" — write, build, verify, push, then report.
