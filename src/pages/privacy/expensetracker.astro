@@ -2,48 +2,127 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Expense Tracker Privacy Policy - Logicpath Systems">
+<Layout title="Wallet: Expense & Budget Tracker Privacy Policy - Logicpath Systems">
     <section class="legal-page" style="padding-top: 120px; min-height: 100vh;">
         <div class="container reveal">
             <div class="glass-card" style="padding: clamp(2rem, 5vw, 4rem);">
                 <header style="margin-bottom: 3rem; text-align: center;">
                     <h1 class="gradient-text">Privacy Policy</h1>
-                    <p style="color: var(--text-secondary);"><strong>Effective Date:</strong> March 21, 2026</p>
+                    <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 0.5rem;"><strong>Wallet: Expense &amp; Budget Tracker</strong></p>
+                    <p style="color: var(--text-secondary);">Logicpath Systems &middot; <strong>Effective Date:</strong> November 6, 2026</p>
                 </header>
 
                 <main class="legal-content">
-                    <p>This privacy policy applies to the <strong>Expense Tracker</strong> app (hereby referred to as "Application") for mobile devices that was created by Logicpath Systems (hereby referred to as "Service Provider") as a free service. This service is intended for use "AS IS".</p>
+                    <p>This privacy policy applies to the Wallet: Expense &amp; Budget Tracker app (hereby referred to as &ldquo;Application&rdquo;) for mobile devices, created by Logicpath Systems (hereby referred to as &ldquo;Service Provider&rdquo;) as a free, ad-supported service. This service is intended for use &ldquo;AS IS&rdquo;.</p>
 
-                    <h2>1. Data Collection and Use</h2>
-                    <p>The Application is designed with a strict "local-first" and offline-only approach. <strong>The Service Provider does not collect, transmit, store, or have access to any of your personal or financial data.</strong></p>
-                    <p>All information you provide—including transactions, categories, amounts, and notes—is saved exceptionally on your device's local storage. The Application does not communicate with any external servers or databases to store your information.</p>
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
 
-                    <h2>2. Local Storage and Data Retention</h2>
-                    <p>Because your data is stored locally on your device:</p>
+                    <h2>1. Summary</h2>
+                    <p>Your financial data stays on your device. Transactions, amounts, categories, notes, budgets, accounts and imported statements are stored only in your device&rsquo;s local storage. The Service Provider never receives them.</p>
+                    <p>The Application shows ads and uses analytics. To do this it uses Google AdMob and Google Analytics for Firebase, which collect some device and usage information as described in Section 4.</p>
+                    <p>Your financial data is never shared with these services. No transaction amounts, categories, notes or statement contents are sent to AdMob, Firebase or any other third party.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>2. Information Stored on Your Device</h2>
+                    <p>All information you enter or import, including transactions, categories, amounts, notes, monthly budgets, accounts and their opening balances, and app settings, is saved only in your device&rsquo;s local storage.</p>
                     <ul>
-                        <li>You have complete control over your data.</li>
-                        <li><strong>If you uninstall the Application, clear the Application's data from your device settings, or lose your device, your data will be permanently deleted.</strong></li>
+                        <li><strong>PDF statement import:</strong> statements you choose to import are read and processed entirely on your device. The file and its contents are not uploaded anywhere. From each statement the Application keeps only what it needs: the date and time, amount, payee name, the UPI transaction reference (used to avoid importing the same payment twice) and your bank name with the last 2&ndash;4 digits of your account or card number (used to show balances per account). Full account or card numbers are never stored.</li>
+                        <li><strong>Automatic categories:</strong> suggested categories for imported payments are worked out on your device, using built-in rules and the categories you chose before. Nothing is sent anywhere to do this.</li>
+                        <li><strong>Reminders and budget alerts:</strong> these notifications are scheduled and calculated on your device. No server is involved.</li>
+                    </ul>
+                    <p>The Service Provider has no access to this data and cannot view, recover or delete it on your behalf.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>3. Local Storage and Data Retention</h2>
+                    <p>Because your financial data is stored locally:</p>
+                    <ul>
+                        <li>You have complete control over it.</li>
+                        <li>If you uninstall the Application, clear the Application&rsquo;s data from your device settings, or lose your device, your data will be permanently deleted unless you have made a backup.</li>
                         <li>The Service Provider cannot recover lost data under any circumstances.</li>
                     </ul>
 
-                    <h2>3. Backups</h2>
-                    <p>The Application provides functionalities to export your data (e.g., as a JSON backup or CSV export). When you use these features, the data is generated locally on your device. It is your sole responsibility to securely store and manage these backup files. The Service Provider has no access to your backups.</p>
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
 
-                    <h2>4. Third-Party Services</h2>
-                    <p>The Application does not integrate with third-party analytics, crash reporting, or advertising services that track your behavior or collect your personal information.</p>
+                    <h2>4. Third-Party Services and the Data They Collect</h2>
+                    <p>The Application uses the following third-party services, provided by Google LLC. These services collect information automatically and process it under their own privacy policies.</p>
 
-                    <h2>5. Security</h2>
-                    <p>The Service Provider values your trust in using the Application. All your data remains localized within the secure sandbox provided by your device's operating system. However, please be aware that no method of electronic storage on a mobile device is 100% secure, and the Service Provider cannot guarantee its absolute security. It is recommended that you secure your device using standard screen locks (PIN, password, biometric) to prevent unauthorized access to your local data.</p>
+                    <h3>Google AdMob (advertising)</h3>
+                    <p>AdMob is used to show banner, full-screen, app open and rewarded video ads. To serve and measure ads, and to prevent fraud, AdMob may collect:</p>
+                    <ul>
+                        <li>Your device&rsquo;s advertising ID (Android Advertising ID or Apple IDFA, where permitted)</li>
+                        <li>Device information, such as device model, operating system version, language and screen size</li>
+                        <li>Your IP address, which may be used to estimate your general location (country or city)</li>
+                        <li>Ad interaction data, such as which ads were shown, clicked or watched</li>
+                        <li>App diagnostics related to ad performance, such as crash and loading information</li>
+                    </ul>
+                    <p>Ads may be personalised based on this information, depending on your consent choices and device settings (see Section 5).</p>
 
-                    <h2>6. Children's Privacy</h2>
-                    <p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age.</p>
+                    <h3>Google Analytics for Firebase (analytics)</h3>
+                    <p>Firebase Analytics is used to understand how the Application is used, for example which screens are opened, so the Service Provider can improve it. It may collect:</p>
+                    <ul>
+                        <li>An app instance ID and device information, such as device model, operating system version and language</li>
+                        <li>App usage data, such as screens viewed, session length, app opens and updates</li>
+                        <li>Your IP address, which may be used to estimate your general location</li>
+                    </ul>
+                    <p>The Service Provider sees this information only in aggregated, non-identifying reports. Firebase Analytics does not receive your financial data.</p>
 
-                    <h2>7. Changes to This Privacy Policy</h2>
-                    <p>The Service Provider may update this Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. The Service Provider will notify you of any changes by updating the "Effective Date" at the top of this Privacy Policy.</p>
+                    <h3>More information</h3>
+                    <ul>
+                        <li>Google Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">https://policies.google.com/privacy</a></li>
+                        <li>How Google uses information from apps that use its services: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">https://policies.google.com/technologies/partner-sites</a></li>
+                        <li>AdMob and user privacy: <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">https://support.google.com/admob/answer/6128543</a></li>
+                        <li>Firebase privacy and security: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--accent-secondary);">https://firebase.google.com/support/privacy</a></li>
+                    </ul>
 
-                    <h2>8. Contact Us</h2>
-                    <p>If you have any questions or suggestions about this Privacy Policy, please feel free to reach out to us at:</p>
-                    <p><strong>Email:</strong> <a href="mailto:contact@logicpathsystems.com" style="color: var(--accent-secondary);">contact@logicpathsystems.com</a></p>
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>5. Your Choices</h2>
+                    <ul>
+                        <li><strong>Ad consent (EEA, UK and Switzerland):</strong> on first launch, you are asked for consent through Google&rsquo;s consent form before personalised ads or related data collection take place. You can change your choice at any time in Settings &rarr; Ad Privacy Choices.</li>
+                        <li><strong>Personalised ads on Android:</strong> you can opt out of ads personalisation, or reset or delete your advertising ID, in your device settings (for example, Settings &rarr; Google &rarr; Ads, or Settings &rarr; Privacy &rarr; Ads, depending on your device).</li>
+                        <li><strong>Personalised ads on iOS:</strong> you can limit ad tracking in Settings &rarr; Privacy &amp; Security &rarr; Tracking.</li>
+                        <li><strong>Notifications:</strong> you can turn daily reminders off in Settings &rarr; Daily Reminder, or block notifications in your device settings.</li>
+                        <li><strong>Stop all collection:</strong> uninstalling the Application stops all further collection by the Application and its third-party services.</li>
+                    </ul>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>6. Backups and Exports</h2>
+                    <p>The Application lets you export your data as a JSON backup or CSV file, and share a summary image from Insights. These files are created locally on your device and are only shared when you choose to. If you choose to share or save them using another app (for example email or cloud storage), that app&rsquo;s privacy policy applies. It is your responsibility to store and manage backup files securely. The Service Provider has no access to your backups.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>7. Permissions Used</h2>
+                    <ul>
+                        <li><strong>Internet / network access:</strong> to load ads and send analytics. Your financial data is never sent over the network by the Application.</li>
+                        <li><strong>Advertising ID:</strong> to show and measure ads (see Section 4).</li>
+                        <li><strong>Notifications:</strong> to show the daily reminder and budget alerts you choose to enable.</li>
+                        <li><strong>Run at startup:</strong> so scheduled reminders still work after your device restarts.</li>
+                        <li><strong>File access (only when you choose):</strong> to pick a PDF statement to import or a backup file to restore.</li>
+                    </ul>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>8. Security</h2>
+                    <p>Your financial data stays inside the secure sandbox provided by your device&rsquo;s operating system. However, no method of electronic storage is 100% secure, and the Service Provider cannot guarantee absolute security. We recommend protecting your device with a screen lock (PIN, password or biometrics).</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>9. Children&rsquo;s Privacy</h2>
+                    <p>The Application is not directed at children under the age of 13, and the Service Provider does not knowingly collect personal information from children under 13. If you believe a child has provided information through the Application, please contact us using the details below.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>10. Changes to This Privacy Policy</h2>
+                    <p>The Service Provider may update this Privacy Policy from time to time, for example when features or third-party services change. You are advised to review this page periodically. Changes are shown by updating the &ldquo;Effective Date&rdquo; at the top of this policy.</p>
+
+                    <hr style="margin: 2.5rem 0; border-color: rgba(255, 255, 255, 0.1);" />
+
+                    <h2>11. Contact Us</h2>
+                    <p>If you have any questions or suggestions about this Privacy Policy, please contact us at:</p>
+                    <p><strong>Email:</strong> <a href="mailto:contact@logicpathsystems.com" style="color: var(--accent-secondary);"><strong>contact@logicpathsystems.com</strong></a></p>
                 </main>
             </div>
         </div>
@@ -57,7 +136,14 @@ import Layout from '../../layouts/Layout.astro';
         margin-bottom: 1rem;
         font-size: 1.5rem;
     }
-    
+
+    .legal-content h3 {
+        color: var(--text-primary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+    }
+
     .legal-content p, .legal-content ul {
         color: var(--text-secondary);
         margin-bottom: 1.25rem;
