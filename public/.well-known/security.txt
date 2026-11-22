@@ -1,0 +1,4 @@
+Contact: mailto:contact@logicpathsystems.com
+Expires: 2027-11-22T00:00:00.000Z
+Preferred-Languages: en, hi, mr
+Canonical: https://logicpathsystems.com/.well-known/security.txt

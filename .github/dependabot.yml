@@ -12,3 +12,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # v4 excludes dotfiles from the Pages artifact, which would drop
+      # /.well-known/security.txt. Revisit only with a replacement for it.
+      - dependency-name: actions/upload-pages-artifact
+        update-types: ["version-update:semver-major"]
